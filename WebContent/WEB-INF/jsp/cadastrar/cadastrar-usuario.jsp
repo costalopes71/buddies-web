@@ -63,8 +63,8 @@
 								</div>
 									
 								<div class="form-group col-md-2">
-									<form:label path="password" for="password">Senha</form:label>
-									<form:password path="password" cssClass="form-control" id="password" onkeyup="validaSenha()" placeholder="Senha"/>
+									<form:label path="senha" for="senha">Senha</form:label>
+									<form:password path="senha" cssClass="form-control" id="password" onkeyup="validaSenha()" placeholder="Senha"/>
 									<span class="text-danger" id="erroPassword"></span>
 								</div>
 								
@@ -79,7 +79,7 @@
 							</div>
 							
 							<div class="row float-right btnNextPrevious">
-								<a class="btn btn-primary" href="#" onclick="abreAbaEmpresas()">Próximo</a>
+								<a class="btn btn-primary" href="#" onclick="abreAbaConfirmacao()">Próximo</a>
 							</div>
 							
 						</div>

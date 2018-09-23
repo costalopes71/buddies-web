@@ -13,7 +13,7 @@
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> Administração </a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="<c:url value="#"/>">Cadastrar Responsável</a>
+							<a class="dropdown-item" href="<c:url value="/usuario/cadastrar-usuario"/>">Cadastrar Responsável</a>
 							<a class="dropdown-item" href="<c:url value="/usuario/usuarios-home"/>">Listar Reponsáveis</a> 
 						</div>
 					</li>

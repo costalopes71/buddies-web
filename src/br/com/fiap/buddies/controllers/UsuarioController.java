@@ -37,6 +37,7 @@ public class UsuarioController {
 			return MyUtils.redirectToErrorPage(e);
 		}
 		model.addObject("usuarios", usuarios);
+		model.addObject("titulo", "Responsáveis | Buddies");
 		MyUtils.incrementarBreadcrumb(model, "Reponsáveis");
 		return model;
 	}
@@ -46,6 +47,7 @@ public class UsuarioController {
 		ModelAndView model = new ModelAndView("/home/perfil-usuario");
 		Responsavel usuarioLogado = (Responsavel) request.getSession().getAttribute("usuarioLogado");
 		model.addObject("usuario", usuarioLogado);
+		model.addObject("titulo", "Perfil Responsável | Buddies");
 		MyUtils.incrementarBreadcrumb(model, "Minha Conta");
 		return model;
 	}
@@ -73,6 +75,7 @@ public class UsuarioController {
 	@GetMapping("/alterar-senha")
 	public ModelAndView abrirTelaAlteracaoSenhaUsuarioLogado() {
 		ModelAndView model = new ModelAndView("/editar/editar-senha");
+		model.addObject("titulo", "Alterar Senha | Buddies");
 		MyUtils.incrementarBreadcrumb(model, "Minha Conta", "/usuario/perfil-usuario", "Alterar Senha");
 		return model;
 	}
@@ -101,6 +104,15 @@ public class UsuarioController {
 		redirectAttribute.addFlashAttribute("sucesso", true);
 		redirectAttribute.addFlashAttribute("operacao", "Senha alterada com sucesso.");
 		MyUtils.incrementarBreadcrumb(model, "Minha Conta", "/usuario/perfil-usuario", "Alterar Senha");
+		return model;
+	}
+	
+	@GetMapping("/cadastrar-usuario")
+	public ModelAndView abrirCadastrarForm() {
+		ModelAndView model = new ModelAndView("/cadastrar/cadastrar-usuario");
+		model.addObject("usuario", new Responsavel());
+		model.addObject("titulo", "Cadastrar Responsável | Buddies");
+		MyUtils.incrementarBreadcrumb(model, "Responsáveis", "/usuario/usuarios-home", "Cadastrar");
 		return model;
 	}
 

@@ -21,14 +21,14 @@
 	
 	<mvc:default-servlet-handler/>
 	
-	<!-- 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/usuario/**" />
+			<mvc:mapping path="/login/welcome"/>
 			<bean class="br.com.fiap.buddies.security.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	 -->
+
 	 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

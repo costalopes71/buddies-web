@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import br.com.fiap.buddies.entities.Idoso;
+import br.com.fiap.buddies.entities.Responsavel;
 
 /**
- * Classe respons�vel por verificar e controlar a sess�o do usu�rio logado no portal buddies
+ * Classe responsavel por verificar e controlar a sessaoo do usuario logado no portal buddies
  * @author Joao Lopes
  * */
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
@@ -17,10 +17,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("vai demonio");
 		String requestURI = request.getRequestURI();
 		if (!requestURI.equals("/login/") || !requestURI.equals("") || !requestURI.equals("/")) {
-			Idoso usuario = (Idoso) request.getSession().getAttribute("usuarioLogado");
+			Responsavel usuario = (Responsavel) request.getSession().getAttribute("usuarioLogado");
 			if (usuario == null) {
 				response.sendRedirect(request.getContextPath() + "/login/");
 				return false;
