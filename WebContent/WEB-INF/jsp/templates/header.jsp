@@ -7,7 +7,7 @@
 	<title>${titulo}</title>
 	
 	<!-- CSS includes -->
-	<link rel="shortcut icon" type="image/png" href="<c:url value="/resources/images/logo_portal.ico" />"/>
+	<link rel="shortcut icon" type="image/png" href="<c:url value="/resources/images/buddies_favicon.ico" />"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 	<link rel="stylesheet" href="<c:url value="/resources/fonts/font-awesome.min.css"/>">
 	<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">

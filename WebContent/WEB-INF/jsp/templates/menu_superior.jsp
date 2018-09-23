@@ -19,6 +19,8 @@
 					</li>
 				</c:if>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">Idosos</a></li>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">FAQ</a></li>
+				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">Contato</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenu" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenu">

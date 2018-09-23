@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,8 @@ public class UsuarioController {
 
 	@Autowired
 	private ResponsavelBO responsavelBO;
+	
+	private String senhaSalva;
 
 	@GetMapping("/usuarios-home")
 	public ModelAndView abrirTelaUsuarios() {
@@ -116,6 +119,73 @@ public class UsuarioController {
 		return model;
 	}
 
+	@PostMapping("/cadastrar-usuario")
+	public ModelAndView cadastrar(Responsavel usuario, RedirectAttributes redirectAttribute) {
+		try {
+			responsavelBO.cadastrar(usuario);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+		
+		redirectAttribute.addFlashAttribute("sucesso", true);
+		redirectAttribute.addFlashAttribute("operacao", "cadastrado");
+		return new ModelAndView("redirect:/usuario/usuarios-home");
+	}
+	
+	@GetMapping("/editar-usuario/{id}")
+	public ModelAndView abrirEditarForm(@PathVariable("id") int idUsuario) {
+		ModelAndView model = new ModelAndView("/editar/editar-usuario");
+		Responsavel usuario = null;
+		try {
+			usuario = responsavelBO.pesquisar(idUsuario);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+		
+		senhaSalva = usuario.getSenha();
+		model.addObject("titulo", "Editar Responsável | Buddies");
+		model.addObject("usuario", usuario);
+		MyUtils.incrementarBreadcrumb(model, "Responsáveis", "/usuario/usuarios-home", "Editar");
+		return model;
+	}
+	
+	@PostMapping("/editar-usuario")
+	public ModelAndView editar(Responsavel usuario, HttpServletRequest request, RedirectAttributes redirectAttribute) {
+		
+		if (usuario.getSenha() == null || usuario.getSenha().equals("")) {
+			usuario.setSenha(senhaSalva);
+			senhaSalva = "";
+		}
+		
+		try {
+			responsavelBO.atualizar(usuario);
+			redirectAttribute.addFlashAttribute("sucesso", true);
+			redirectAttribute.addFlashAttribute("operacao", "editado");
+			Responsavel usuarioLogado = (Responsavel) request.getSession().getAttribute("usuarioLogado");
+			
+			if (usuario.getId() == usuarioLogado.getId()) {
+				request.getSession().setAttribute("usuarioLogado", responsavelBO.pesquisar(usuario.getId()));
+			}
+			
+			return new ModelAndView("redirect:/usuario/usuarios-home");
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+	}
+	
+	@PostMapping("/excluir")
+	public ModelAndView excluir(int usuarioId, RedirectAttributes redirectAttributes) {
+		try {
+			responsavelBO.excluir(usuarioId);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+		
+		redirectAttributes.addFlashAttribute("sucesso", true);
+		redirectAttributes.addFlashAttribute("operacao", "excluído");
+		return new ModelAndView("redirect:/usuario/usuarios-home");
+	}
+	
 	private boolean validaSenhaAtual(Login login, RedirectAttributes redirectAttribute) {
 		try {
 			responsavelBO.logar(login);

@@ -26,13 +26,13 @@
 		<div class="row subTitulo">
 			
 			<div class="col-md-12">
-				<a class="btn btn-primary float-right btnCadastrar" href="<c:url value="/usuario/cadastrar-usuario" />">&nbsp;Cadastrar usuários&nbsp;</a>
+				<a class="btn btn-primary float-right btnCadastrar" href="<c:url value="/usuario/cadastrar-usuario" />">Cadastrar responsável</a>
 			</div>
 		</div>
 		<hr/>
 		
 		<c:if test="${sucesso == true }">
-			<div id="divSucesso" class="row alert alert-success msgSucesso" onload="someAlerta()">Usuário ${operacao} com sucesso!</div>
+			<div id="divSucesso" class="row alert alert-success msgSucesso" onload="someAlerta()">Responsável ${operacao} com sucesso!</div>
 		</c:if>
 		
 		<div class="row">

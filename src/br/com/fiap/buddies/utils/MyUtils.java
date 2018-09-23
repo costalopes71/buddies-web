@@ -12,7 +12,7 @@ public final class MyUtils {
 	public static ModelAndView redirectToErrorPage(Exception exception) {
 		ModelAndView model = new ModelAndView("home/error-page");
 		model.addObject("msgErro", exception.getMessage());
-		model.addObject("paginaAtiva", "Pï¿½gina de Erro");
+		model.addObject("paginaAtiva", "Página de Erro");
 		return model;
 	}
 	
@@ -27,9 +27,9 @@ public final class MyUtils {
 	}
 	
 	/**
-	 * @throws Exception 
-	 * Pega todos os arquivos de todas as subpastas de um determinador diretï¿½rio e
-	 * coloca esses arquivos em um ï¿½nico vetor
+	 * @author Joao Lopes
+	 * Pega todos os arquivos de todas as subpastas de um determinador diretorio e
+	 * coloca esses arquivos em um unico vetor
 	 * @param directoryName, nome do diretorio
 	 * @return a lista com todos os arquivos
 	 * @throws Exception

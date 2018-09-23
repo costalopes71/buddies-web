@@ -15,7 +15,8 @@
 	
 	<context:component-scan	base-package="br.com.fiap.buddies.controllers,
 										  br.com.fiap.buddies.dao,
-										  br.com.fiap.buddies.bo"/>
+										  br.com.fiap.buddies.bo,
+										  br.com.fiap.buddies.resource"/>
 	
 	<mvc:annotation-driven />
 	

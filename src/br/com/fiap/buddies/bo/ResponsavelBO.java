@@ -4,12 +4,15 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
+import javax.naming.SizeLimitExceededException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.buddies.dao.ResponsavelDAO;
 import br.com.fiap.buddies.entities.Responsavel;
 import br.com.fiap.buddies.exceptions.DBException;
+import br.com.fiap.buddies.exceptions.LimiteCaracteresException;
 import br.com.fiap.buddies.security.Login;
 import br.com.fiap.buddies.security.pbkdf2.PasswordEncryptor;
 
@@ -26,6 +29,20 @@ public class ResponsavelBO {
 			throw new DBException(e.getMessage());
 		}
 	}
+
+	public void cadastrar(Responsavel usuario) throws DBException {
+		try {
+			validarUsuario(usuario);
+			responsavelDAO.cadastrar(usuario);
+		} catch (Exception e) {
+			if (e.getMessage().contains("ConstraintViolation")) {
+				e.printStackTrace();
+				throw new DBException("Já existe responsável cadastrado com o e-mail escolhido. Não é possível cadastrar outro usuário com o mesmo e-mail.");
+			}
+			e.printStackTrace();
+			throw new DBException("Erro ao tentar cadastrar o responsável. Erro: " + e.getMessage());
+		}
+	}
 	
 	public void atualizarNomeEmailUsuarioLogado(Responsavel usuario) throws DBException {
 		try {
@@ -39,6 +56,29 @@ public class ResponsavelBO {
 			responsavelDAO.alterarNomeEmail(usuario);
 		} catch (Exception e) {
 			throw new DBException("Erro ao tentar atualizar os dados do usuário. Erro: " + e.getMessage());
+		}
+	}
+	
+	public void atualizar(Responsavel usuario) throws DBException {
+		try {
+			validarUsuario(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DBException(e.getMessage());
+		}
+		
+		try {
+			responsavelDAO.alterar(usuario);
+		} catch (Exception e) {
+			throw new DBException("Erro ao tentar atualizar o responsável. Erro: " + e.getMessage());
+		}
+	}
+	
+	public void excluir(int usuarioId) throws DBException {
+		try {
+			responsavelDAO.remover(usuarioId);
+		} catch (Exception e) {
+			throw new DBException("Erro ao tentar excluir o usuário. Erro: " + e.getMessage());
 		}
 	}
 	
@@ -79,6 +119,20 @@ public class ResponsavelBO {
 		}
 	}
 	
+	private void validarUsuario(Responsavel usuario) throws NoSuchAlgorithmException, InvalidKeySpecException, SizeLimitExceededException, LimiteCaracteresException, IllegalStateException {
+
+		if (usuario.getSenha().length() < 5) {
+			throw new LimiteCaracteresException("A senha deve ter no mínimo 5 (cinco) caracteres.");
+		}
+		
+		if (usuario.getSenha().length() <= 20) {
+			usuario.setSenha(criptografarPassword(usuario.getSenha()));
+		}
+		
+		validarNomeEmail(usuario);
+		
+	}
+	
 	private String criptografarPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		try {
 			return PasswordEncryptor.generateStorngPasswordHash(password);
@@ -99,6 +153,14 @@ public class ResponsavelBO {
 			throw new DBException("Erro ao tentar listar os responsáveis. Erro: " + e.getMessage());
 		}
 
+	}
+
+	public Responsavel pesquisar(int idUsuario) throws DBException {
+		try {
+			return responsavelDAO.pesquisar(idUsuario);
+		} catch (Exception e) {
+			throw new DBException("Erro ao tentar buscar o usuário de código [" + idUsuario + "].\nErro: " + e.getMessage());
+		}
 	}
 	
 }
