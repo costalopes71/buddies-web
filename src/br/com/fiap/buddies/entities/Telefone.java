@@ -33,7 +33,7 @@ public class Telefone {
 
 	@OneToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	private Idoso usuario;
 
 	public int getIdTelefone() {
 		return idTelefone;
@@ -67,11 +67,11 @@ public class Telefone {
 		this.ddd = ddd;
 	}
 
-	public Usuario getUsuario() {
+	public Idoso getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Idoso usuario) {
 		this.usuario = usuario;
 	}
 

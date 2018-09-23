@@ -44,10 +44,6 @@ function validaFormulario() {
 		mensagem += "\n\t - Nome do usuário inválido. O tamanho mínimo do nome deve ser de 03 (três) caracteres.";
 		formularioValido = false;
 	}
-	if (!this.validaDepartamento()) {
-		mensagem += "\n\t - Departamento inválido. Por favor escolha um departamento.";
-		formularioValido = false;
-	}
 	if (!this.validaEmail()) {
 		mensagem += "\n\t - E-mail inválido. (Exemplo de formato válido: usuario@dominico.com).";
 		formularioValido = false;
@@ -57,21 +53,6 @@ function validaFormulario() {
 	if (ctx.search("editar-usuario") == -1) {
 		if (!this.validaSenha()) {
 			mensagem += "\n\t - Senha inválida. A senha deve conter pelo menos 5 caracteres.";
-			formularioValido = false;
-		}
-	}
-	
-	if (!this.validaPerfil()) {
-		mensagem += "\n\t - Perfil inválido. Por favor escolha um perfil.";
-		formularioValido = false;
-	}
-	
-	if (!this.validaEmpresas()) {
-		mensagem += "\n\t - Não é possível cadastrar ou editar um usuário que não tenha empresas. Escolha ao menos 1 (uma) empresa.";
-		if (formularioValido == true) {
-			$('#empresas-tab').click();
-			return false;
-		} else {
 			formularioValido = false;
 		}
 	}
@@ -98,17 +79,6 @@ function validaNome(){
 		}
 		$('#nome').focus();
 		return false;
-	}
-}
-
-function validaDepartamento() {
-	if($('#departamento').val() == -1){
-		$('#erroDepartamento').text('Escolha um departamento.');
-		$('#departamento').focus();
-		return false;
-	} else {
-		$('#erroDepartamento').text('');
-		return true;
 	}
 }
 
@@ -144,34 +114,7 @@ function validaSenha() {
 	}
 }
 
-function validaPerfil() {
-	if($('#perfil').val() == -1){
-		$('#erroPerfil').text('Escolha um perfil.');
-		$('#perfil').focus();
-		return false;
-	} else {
-		$('#erroPerfil').text('');
-		return true;
-	}
-}
-
-function validaEmpresas() {
-	var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-	var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
-	if (checkedOne == false) {
-		$('#erroEmpresas').text('Não é possível cadastrar ou editar um usuário sem empresa. Escolha pelo menos 1 (uma) empresa.');
-		return false;
-	} else {
-		$('#erroEmpresas').text('');
-		return true;
-	}
-}
-
 function isEmail(email){
-	  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	  return re.test(email);
-	}
-
-
-
-
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}

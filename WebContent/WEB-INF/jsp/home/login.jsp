@@ -34,19 +34,19 @@
 				</div>
 				<div style="margin-bottom: 50px;" class="panel-body">
 					<c:url value="/login/logar" var="action"/>
-					<form:form id="loginForm" action="${action}" method="post">
+					<form:form id="loginForm" action="${action}" method="post" modelAttribute="login">
 						
 						<fieldset>
 							
 							<div class="form-group">
-								<input name="username" id="username" class="form-control" placeholder="E-mail"/>
+								<form:input path="username" name="" id="username" class="form-control" placeholder="E-mail"/>
 							</div>
 							
 							<div class="form-group">
-								<input type="password" name="password" id="password" class="form-control" placeholder="Senha"/>
+								<form:password path="password" name="password" id="password" class="form-control" placeholder="Senha"/>
 							</div>
 							
-							<button id="login-init" name="login" class="btn btn-primary btn-block" style="height: 40px;">Login</button>
+							<form:button id="login-init" name="login" class="btn btn-primary btn-block" style="height: 40px;">Login</form:button>
 						</fieldset>
 						
 					</form:form>

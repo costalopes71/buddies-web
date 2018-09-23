@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Help Desk | Sinapsis</title>
+	<title>${titulo}</title>
 	
 	<!-- CSS includes -->
 	<link rel="shortcut icon" type="image/png" href="<c:url value="/resources/images/logo_portal.ico" />"/>

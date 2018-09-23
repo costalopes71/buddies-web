@@ -20,15 +20,15 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_BDS_USUARIO")
-@SequenceGenerator(name = "usuario", sequenceName = "SEQ_BDS_USUARIO", allocationSize = 1, initialValue = 1)
-public class Usuario {
+@SequenceGenerator(name = "idoso", sequenceName = "SEQ_BDS_IDOSO", allocationSize = 1, initialValue = 1)
+public class Idoso {
 
 	@Id
-	@Column(name = "id_usuario")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
-	private int idUsuario;
+	@Column(name = "id_idoso")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idoso")
+	private int id;
 
-	@Column(name = "nm_usuario", nullable = false, length = 150)
+	@Column(name = "nm_idoso", nullable = false, length = 150)
 	private String nome;
 
 	@Column(name = "ds_apelido", nullable = false, length = 50)
@@ -50,8 +50,8 @@ public class Usuario {
 	@Column(name = "ds_email", length = 50)
 	private String email;
 
-	@Column(name = "ds_usuario", length = 1000)
-	private String descricaoUsuario;
+	@Column(name = "ds_idoso", length = 1000)
+	private String descricao;
 
 	@Column(name = "pw_senha", nullable = false, length = 250)
 	private String senha;
@@ -82,14 +82,6 @@ public class Usuario {
 	@JoinColumn(name="id_cantor")
 	private Cantor cantor;
 	
-	public int getIdCidade() {
-		return idUsuario;
-	}
-
-	public void setIdCidade(int idCidade) {
-		this.idUsuario = idCidade;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -147,11 +139,11 @@ public class Usuario {
 	}
 
 	public String getDescricaoUsuario() {
-		return descricaoUsuario;
+		return descricao;
 	}
 
 	public void setDescricaoUsuario(String descricaoUsuario) {
-		this.descricaoUsuario = descricaoUsuario;
+		this.descricao = descricaoUsuario;
 	}
 
 	public String getSenha() {
@@ -168,14 +160,6 @@ public class Usuario {
 
 	public void setResponsavel(Responsavel responsavel) {
 		this.responsavel = responsavel;
-	}
-
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
 	}
 
 	public List<Telefone> getListaTelefones() {
@@ -216,6 +200,30 @@ public class Usuario {
 
 	public void setListaFilhos(Set<Filho> listaFilhos) {
 		this.listaFilhos = listaFilhos;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Cantor getCantor() {
+		return cantor;
+	}
+
+	public void setCantor(Cantor cantor) {
+		this.cantor = cantor;
 	}
 
 }

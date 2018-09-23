@@ -9,20 +9,16 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="<c:url value="/login/welcome"/>">Home</a></li>
-				<c:if test="${usuarioLogado.perfil.tipoPerfil == 'GERENTE'}">
+				<c:if test="${usuarioLogado.administrador == true}">
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> Administração </a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-							<a class="dropdown-item" href="<c:url value="/empresa/empresas-home"/>">Empresas</a>
-							<!-- <a class="dropdown-item" href="#">FAQs</a>  --> 
-							<a class="dropdown-item" href="<c:url value="/produto/produtos-home"/>">Produtos</a> 
-							<a class="dropdown-item" href="<c:url value="/download/downloads-home"/>">Downloads</a>
-							<a class="dropdown-item" href="<c:url value="/usuario/usuarios-home"/>">Usuários</a>
+							<a class="dropdown-item" href="<c:url value="#"/>">Cadastrar Responsável</a>
+							<a class="dropdown-item" href="<c:url value="/usuario/usuarios-home"/>">Listar Reponsáveis</a> 
 						</div>
 					</li>
 				</c:if>
-				<li class="nav-item"><a class="nav-link" href="<c:url value="/download/downloads-usuario"/>">Downloads</a></li>
-				<!-- <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li> -->
+				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">Idosos</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenu" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenu">

@@ -25,7 +25,7 @@ public class Filho {
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", nullable = false)
-	private Usuario usuario;
+	private Idoso usuario;
 
 	public int getIdFilho() {
 		return idFilho;
@@ -35,11 +35,11 @@ public class Filho {
 		this.idFilho = idFilho;
 	}
 
-	public Usuario getUsuario() {
+	public Idoso getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Idoso usuario) {
 		this.usuario = usuario;
 	}
 

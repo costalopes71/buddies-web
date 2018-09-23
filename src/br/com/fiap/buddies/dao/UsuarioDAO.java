@@ -1,7 +1,7 @@
 package br.com.fiap.buddies.dao;
 
-import br.com.fiap.buddies.entities.Usuario;
+import br.com.fiap.buddies.entities.Idoso;
 
-public interface UsuarioDAO extends GenericDAO<Usuario, Integer> {
+public interface UsuarioDAO extends GenericDAO<Idoso, Integer> {
 
 }

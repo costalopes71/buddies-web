@@ -14,7 +14,8 @@
 						http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	
 	<context:component-scan	base-package="br.com.fiap.buddies.controllers,
-										  br.com.fiap.buddies.dao"/>
+										  br.com.fiap.buddies.dao,
+										  br.com.fiap.buddies.bo"/>
 	
 	<mvc:annotation-driven />
 	

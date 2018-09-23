@@ -19,7 +19,7 @@ public class Responsavel {
 	private int id;
 
 	@Column(name = "nm_responsavel", nullable = false, length = 150)
-	private String nomeResponsavel;
+	private String nome;
 
 	@Column(name = "ds_email", length = 50)
 	private String email;
@@ -30,12 +30,12 @@ public class Responsavel {
 	@Column(name="st_administrador", nullable=false)
 	private boolean administrador;
 		
-	public String getNomeResponsavel() {
-		return nomeResponsavel;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeResponsavel(String nomeResponsavel) {
-		this.nomeResponsavel = nomeResponsavel;
+	public void setNome(String nomeResponsavel) {
+		this.nome = nomeResponsavel;
 	}
 
 	public String getEmail() {
