@@ -21,12 +21,12 @@ public class Cantor {
 	@Column(name="nm_cantor", nullable=false, length=150)
 	private String nomeCantor;
 
-	public int getIdCidade() {
+	public int getId() {
 		return id;
 	}
 
-	public void setIdCidade(int idCidade) {
-		this.id = idCidade;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNomeCantor() {

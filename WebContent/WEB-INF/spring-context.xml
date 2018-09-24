@@ -25,6 +25,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/usuario/**" />
+			<mvc:mapping path="/idoso/**" />
 			<mvc:mapping path="/login/welcome"/>
 			<bean class="br.com.fiap.buddies.security.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>

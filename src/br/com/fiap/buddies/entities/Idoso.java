@@ -2,7 +2,6 @@ package br.com.fiap.buddies.entities;
 
 import java.util.Calendar;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -57,9 +57,9 @@ public class Idoso {
 	private String senha;
 
 	@OneToMany(mappedBy = "usuario")
-	private List<Telefone> listaTelefones;
+	private Set<Telefone> listaTelefones = new HashSet<>();
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_responsavel")
 	private Responsavel responsavel;
 
@@ -162,11 +162,11 @@ public class Idoso {
 		this.responsavel = responsavel;
 	}
 
-	public List<Telefone> getListaTelefones() {
+	public Set<Telefone> getListaTelefones() {
 		return listaTelefones;
 	}
 
-	public void setListaTelefones(List<Telefone> listaTelefones) {
+	public void setListaTelefones(Set<Telefone> listaTelefones) {
 		this.listaTelefones = listaTelefones;
 	}
 

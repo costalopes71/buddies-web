@@ -18,7 +18,13 @@
 						</div>
 					</li>
 				</c:if>
-				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">Idosos</a></li>
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Idosos </a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+						<a class="dropdown-item" href="<c:url value="/idoso/cadastrar-idoso"/>">Cadastrar Idosos</a>
+						<a class="dropdown-item" href="<c:url value="/idoso/idosos-home"/>">Listar Idosos</a> 
+					</div>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">FAQ</a></li>
 				<li class="nav-item"><a class="nav-link" href="<c:url value="#"/>">Contato</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenu" data-toggle="dropdown"
