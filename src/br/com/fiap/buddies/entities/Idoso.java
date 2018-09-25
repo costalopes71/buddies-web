@@ -57,11 +57,11 @@ public class Idoso {
 	@Column(name = "pw_senha", nullable = false, length = 250)
 	private String senha;
 
-	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	@JoinColumn(name="id_cantor")
 	private Cantor cantor;
 	
-	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	@JoinColumn(name = "id_profissao")
 	private Profissao profissao;
 	
@@ -69,11 +69,11 @@ public class Idoso {
 	@JoinColumn(name = "id_responsavel")
 	private Responsavel responsavel;
 
-	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	@JoinColumn(name = "id_filme")
 	private Filme filme;
 	
-	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	@JoinColumn(name = "id_logradouro")
 	private Logradouro logradouro;
 	

@@ -17,11 +17,6 @@ $(document).ready(function (){
 	});
 });
 
-// função que checa todos os checkbox quando clicado o check all
-$("#checkAll").click(function () {
-	$(".check").prop('checked', $(this).prop('checked'));
-});
-
 //
 // VALIDACAO
 //
@@ -32,28 +27,23 @@ function validaFormulario() {
 	
 	// verifica qual é o contexto que esta chamando, se for editar usuario, ele nao valida a senha, pois a senha pode permanecer a mesma que ja era antes.
 	var ctx = window.location.pathname;
-	if (ctx.search("perfil-usuario") != -1) {
-		if (!this.validaNome() || !this.validaEmail()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 	
 	if (!this.validaNome()) {
-		mensagem += "\n\t - Nome do usuário inválido. O tamanho mínimo do nome deve ser de 03 (três) caracteres.";
 		formularioValido = false;
 	}
 	if (!this.validaEmail()) {
-		mensagem += "\n\t - E-mail inválido. (Exemplo de formato válido: usuario@dominico.com).";
 		formularioValido = false;
 	}
 	
 	// verifica qual é o contexto que esta chamando, se for editar usuario, ele nao valida a senha, pois a senha pode permanecer a mesma que ja era antes.
-	if (ctx.search("editar-usuario") == -1) {
+	if (ctx.search("editar-idoso") != -1) {
 		if (!this.validaSenha()) {
-			mensagem += "\n\t - Senha inválida. A senha deve conter pelo menos 5 caracteres.";
 			formularioValido = false;
+		}
+	} else {
+		var senhaUsuario = $('#password').val();
+		if (senhaUsuario.length > 0) {
+			this.validaSenha();
 		}
 	}
 	

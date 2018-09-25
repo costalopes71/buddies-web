@@ -121,6 +121,8 @@ public class IdosoController {
 	@PostMapping("/editar-idoso")
 	public ModelAndView editar(Idoso idoso, HttpServletRequest request, RedirectAttributes redirectAttribute) {
 		
+		System.out.println("ID do responsavel" + idoso.getResponsavel().getId());
+		
 		if (idoso.getSenha() == null || idoso.getSenha().equals("")) {
 			idoso.setSenha(senhaSalva);
 			senhaSalva = "";

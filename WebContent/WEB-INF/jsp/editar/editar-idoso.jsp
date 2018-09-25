@@ -57,13 +57,13 @@
 							<div class="row">
 								<div class="form-group col-md-8">
 									<form:label path="nome" for="nome">Nome</form:label>
-									<form:input path="nome" cssClass="form-control" id="nome" onkeyup="validaNome()" placeholder="Nome do usuário"/>
+									<form:input path="nome" cssClass="form-control" id="nome" onkeyup="validaNome()" placeholder="Nome do idoso"/>
 									<span class="text-danger" id="erroNome"></span>
 								</div>
 								
 								<div class="form-group col-md-4">
 									<form:label path="apelido" for="nome">Apelido</form:label>
-									<form:input path="apelido" cssClass="form-control" id="nome" onkeyup="validaApelido()" placeholder="Nome do apelido"/>
+									<form:input path="apelido" cssClass="form-control" id="nome" onkeyup="validaApelido()" placeholder="Apelido do idoso"/>
 									<span class="text-danger" id="erroApelido"></span>
 								</div>
 								
@@ -104,6 +104,7 @@
 								</div>	
 								
 								<div class="form-group col-md-2">
+									<form:hidden path="profissao.id"/>
 									<form:label path="profissao.nome" for="profissao">Profissão</form:label>
 									<form:input path="profissao.nome" cssClass="form-control" id="profissao" onkeyup="validaProfissao()" placeholder="Digite a profissão"/>
 									<span class="text-danger" id="erroProfissao"></span>
@@ -129,17 +130,16 @@
 								</div>
 								
 								<div class="form-group col-md-4">
-									<form:label path="responsavel.id" for="responsavel">Responsável</form:label>
-									<form:select path="responsavel.id" cssClass="custom-select form-control" onchange="validaResponsavel()" id="responsavel">
-										<form:option label="${idoso.responsavel.nome}" value="${idoso.responsavel.id}"/>
-										<form:options items="${responsaveis}" itemLabel="nome" itemValue="id"/>
-									</form:select>
+									<form:hidden path="responsavel.id" />
+									<form:label path="responsavel" for="responsavel">Responsável</form:label>
+									<form:input path="responsavel.nome" cssClass="form-control" disabled="true" onchange="validaResponsavel()" id="responsavel"/>
 									<span class="text-danger" id="erroResponsavel"></span>
 								</div>
 							</div>
 						
 							<div class="row">
 								<div class="form-group col-md-8">
+									<form:hidden path="filme.id"/>
 									<form:label path="filme.nome" for="filme">Filme Predileto</form:label>
 									<form:input path="filme.nome" cssClass="form-control" id="filme" onkeyup="validaFilme()" placeholder="Filme predileto"/>
 									<span class="text-danger" id="erroFilme"></span>
@@ -152,6 +152,7 @@
 								</div>
 								
 								<div class="form-group col-md-2">
+									<form:hidden path="cantor.id"/>
 									<form:label path="cantor.nome" for="cantor">Cantor Predileto</form:label>
 									<form:input path="cantor.nome" cssClass="form-control" id="cantor" onkeyup="validaCantor()" placeholder="Cantor predileto"/>
 									<span class="text-danger" id="erroCantor"></span>
@@ -173,6 +174,7 @@
 						<div id="dadosendereco" class="tab-pane fade" role="tabpanel" aria-labelledby="dadosendereco-tab">
 							
 							<div class="row">
+								<form:hidden path="logradouro.id"/>
 								<div class="form-group col-md-8">
 									<form:label path="logradouro.nome" for="logradouro">Logradouro</form:label>
 									<form:input path="logradouro.nome" cssClass="form-control" id="logradouro" onkeyup="validaLogradouro()" placeholder="Nome do logradouro"/>
