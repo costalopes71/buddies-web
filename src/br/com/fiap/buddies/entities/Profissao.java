@@ -16,25 +16,25 @@ public class Profissao {
 	@Id
 	@Column(name = "id_profissao")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="profissao")
-	private int idProfissao;
+	private int id;
 
 	@Column(name = "nm_profissao", nullable = false, length = 150)
-	private String nomeProfissao;
+	private String nome;
 
-	public int getIdProfissao() {
-		return idProfissao;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdProfissao(int idProfissao) {
-		this.idProfissao = idProfissao;
+	public void setId(int idProfissao) {
+		this.id = idProfissao;
 	}
 
-	public String getNomeProfissao() {
-		return nomeProfissao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeProfissao(String nomeProfissao) {
-		this.nomeProfissao = nomeProfissao;
+	public void setNome(String nomeProfissao) {
+		this.nome = nomeProfissao;
 	}
 
 }

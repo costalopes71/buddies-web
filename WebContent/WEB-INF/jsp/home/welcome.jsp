@@ -25,7 +25,7 @@
 		<!-- Intro Content -->
 		<div class="row text-justify">
 			<div class="col-lg-6">
-				<img class="img-fluid rounded mb-4"	src="<c:url value="/resources/images/alzeimer.png" />" alt="Talking Buddies">
+				<img class="img-fluid rounded mb-4"	src="<c:url value="/resources/images/foto_idoso.jpg" />" alt="Talking Buddies">
 			</div>
 			<div class="col-lg-6">
 				<h2>Buddies</h2>
@@ -53,7 +53,7 @@
 				estímulos como conversas com o chatbot personalizado, fotos familiares e músicas do gosto musical do seu usuário.
 			</div>
 			<div class="col-lg-6">
-				<img class="img-fluid rounded mb-4" src="<c:url value="/resources/images/aries.png"/>" alt="Sistema Aries.">
+				<img class="img-fluid rounded mb-4" src="<c:url value="/resources/images/foto_idoso2.jpg"/>" alt="Buddies: melhorando vidas.">
 			</div>
 			<div class="col-lg-12">
 				<p>Esperamos verdadeiramente que você goste da idéia, e mais ainda que ela a inspire a fazer algo melhor e mais amplo.

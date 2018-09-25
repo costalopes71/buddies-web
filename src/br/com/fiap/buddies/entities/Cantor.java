@@ -19,7 +19,7 @@ public class Cantor {
 	private int id;
 
 	@Column(name="nm_cantor", nullable=false, length=150)
-	private String nomeCantor;
+	private String nome;
 
 	public int getId() {
 		return id;
@@ -29,12 +29,12 @@ public class Cantor {
 		this.id = id;
 	}
 
-	public String getNomeCantor() {
-		return nomeCantor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCantor(String nomeCantor) {
-		this.nomeCantor = nomeCantor;
+	public void setNome(String nomeCantor) {
+		this.nome = nomeCantor;
 	}	
 	
 }

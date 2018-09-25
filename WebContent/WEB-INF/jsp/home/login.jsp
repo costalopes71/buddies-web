@@ -26,8 +26,8 @@
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading text-center">
-					<img class="img-responsive img-center" alt="bem vindo ao Buddies" src="<c:url value="/resources/images/logo_login.png"/>"
-						style="width: 320px; height: 40px;"/>
+					<img class="img-responsive img-center" alt="bem vindo ao Buddies" src="<c:url value="/resources/images/logo_login.jpg"/>"
+						style="width: 150px; height: 65px;"/>
 				</div>
 				<div class="text-center">
 					<h4>Buddies - Sirio Libânes</h4>

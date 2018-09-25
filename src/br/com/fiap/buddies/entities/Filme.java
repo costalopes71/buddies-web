@@ -16,25 +16,25 @@ public class Filme {
 	@Id
 	@Column(name="id_filme")
 	@GeneratedValue(generator="filme", strategy=GenerationType.SEQUENCE)
-	private int idFilme;
+	private int id;
 
 	@Column(name="nm_filme", nullable=false, length=150)
-	private String nomeFilme;
+	private String nome;
 	
-	public int getIdFilme() {
-		return idFilme;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdFilme(int idFilme) {
-		this.idFilme = idFilme;
+	public void setId(int idFilme) {
+		this.id = idFilme;
 	}
 
-	public String getNomeFilme() {
-		return nomeFilme;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeFilme(String nomeFilme) {
-		this.nomeFilme = nomeFilme;
+	public void setNome(String nomeFilme) {
+		this.nome = nomeFilme;
 	}
 
 }

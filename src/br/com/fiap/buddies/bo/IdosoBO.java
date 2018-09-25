@@ -22,6 +22,13 @@ public class IdosoBO {
 			throw new DBException("Erro ao tentar listar os idosos. Erro: " + e.getMessage());
 		}
 	}
-	
+
+	public List<Idoso> listarPorResponsavel(int  idResponsavel) throws DBException {
+		try {
+			return idosoDAO.listarPorResponsavel(idResponsavel);
+		} catch (Exception e) {
+			throw new DBException("Erro ao tentar listar os idosos. Erro: " + e.getMessage());
+		}
+	}
 	
 }

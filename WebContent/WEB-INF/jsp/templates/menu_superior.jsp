@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
 	<div class="container">
-		<a class="navbar-brand" href="<c:url value="/login/welcome"/>"><img	src="<c:url value="/resources/images/logo.png"/>" alt="" width="200" height="41"></a>
+		<a class="navbar-brand" href="<c:url value="/login/welcome"/>"><img	src="<c:url value="/resources/images/logo.png"/>" alt="" width="150px" height="50px"></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -14,7 +14,9 @@
 						aria-haspopup="true" aria-expanded="false"> Administração </a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
 							<a class="dropdown-item" href="<c:url value="/usuario/cadastrar-usuario"/>">Cadastrar Responsável</a>
-							<a class="dropdown-item" href="<c:url value="/usuario/usuarios-home"/>">Listar Reponsáveis</a> 
+							<a class="dropdown-item" href="<c:url value="/idoso/cadastrar-idoso"/>">Cadastrar Idosos</a>
+							<a class="dropdown-item" href="<c:url value="/usuario/usuarios-home"/>">Listar Responsáveis</a>
+							<a class="dropdown-item" href="<c:url value="/idoso/idosos-home"/>">Listar Idosos</a> 
 						</div>
 					</li>
 				</c:if>

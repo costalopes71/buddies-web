@@ -9,3 +9,11 @@ function abreAbaDados() {
 function abreAbaConfirmacao() {
 	$('#confirmarcao-tab').click();
 }
+
+function abreAbaDados2() {
+	$('#dados2-tab').click();
+}
+
+function abreAbaEndereco() {
+	$('#dadosendereco-tab').click();
+}

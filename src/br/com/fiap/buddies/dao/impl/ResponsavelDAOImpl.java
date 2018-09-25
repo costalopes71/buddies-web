@@ -22,7 +22,7 @@ public class ResponsavelDAOImpl extends GenericDAOImpl<Responsavel, Integer> imp
 
 		try {
 			usuario = em.createQuery("SELECT DISTINCT(u) FROM Responsavel u WHERE u.email = :pEmail", Responsavel.class).
-					setParameter("pEmail", login.getUsername()).getSingleResult();
+					setParameter("pEmail", login.getUsername().toLowerCase()).getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DBException("Login ou senha incorreto(s).");

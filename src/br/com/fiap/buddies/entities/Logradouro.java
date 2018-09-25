@@ -3,8 +3,6 @@ package br.com.fiap.buddies.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +17,19 @@ public class Logradouro {
 	private String cep;
 
 	@Column(name="ds_logradouro", nullable=false, length=150)
-	private String logradouro;
+	private String nome;
 	
 	@Column(name="nr_logradouro", nullable=false, length=10)
 	private String numero;
 
-	@ManyToOne
-	@JoinColumn(name="id_bairro")
-	private Bairro bairro;
+	@Column(name="nm_bairro")
+	private String bairro;
+	
+	@Column(name="nm_cidade")
+	private String cidade;
 
+	@Column(name="nm_estado")
+	private String estado;
 
 	public String getCep() {
 		return cep;
@@ -37,19 +39,19 @@ public class Logradouro {
 		this.cep = cep;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setNome(String logradouro) {
+		this.nome = logradouro;
 	}
 
-	public Bairro getBairro() {
+	public String getBairro() {
 		return bairro;
 	}
 
-	public void setBairro(Bairro bairro) {
+	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
@@ -67,6 +69,22 @@ public class Logradouro {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }

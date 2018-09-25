@@ -1,9 +1,8 @@
 package br.com.fiap.buddies.entities;
 
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "TB_BDS_USUARIO")
@@ -34,12 +34,13 @@ public class Idoso {
 	@Column(name = "ds_apelido", nullable = false, length = 50)
 	private String apelido;
 
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column(name = "dt_nascimento", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 
 	@Column(name = "nm_conjuge", length = 150)
-	private String nomeConjuge;
+	private String conjuge;
 
 	@Column(name = "nm_time", length = 50)
 	private String time;
@@ -56,31 +57,25 @@ public class Idoso {
 	@Column(name = "pw_senha", nullable = false, length = 250)
 	private String senha;
 
-	@OneToMany(mappedBy = "usuario")
-	private Set<Telefone> listaTelefones = new HashSet<>();
-
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="id_cantor")
+	private Cantor cantor;
+	
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "id_profissao")
+	private Profissao profissao;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_responsavel")
 	private Responsavel responsavel;
 
-	@OneToOne
-	@JoinColumn(name = "id_profissao")
-	private Profissao profissao;
-
-	@OneToOne
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "id_filme")
 	private Filme filme;
 	
-	@OneToOne
+	@OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "id_logradouro")
 	private Logradouro logradouro;
-	
-	@OneToMany(mappedBy="usuario")
-	private Set<Filho> listaFilhos = new HashSet<>();
-
-	@OneToOne
-	@JoinColumn(name="id_cantor")
-	private Cantor cantor;
 	
 	public String getNome() {
 		return nome;
@@ -106,12 +101,12 @@ public class Idoso {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getNomeConjuge() {
-		return nomeConjuge;
+	public String getConjuge() {
+		return conjuge;
 	}
 
-	public void setNomeConjuge(String nomeConjuge) {
-		this.nomeConjuge = nomeConjuge;
+	public void setConjuge(String nomeConjuge) {
+		this.conjuge = nomeConjuge;
 	}
 
 	public String getTime() {
@@ -162,14 +157,6 @@ public class Idoso {
 		this.responsavel = responsavel;
 	}
 
-	public Set<Telefone> getListaTelefones() {
-		return listaTelefones;
-	}
-
-	public void setListaTelefones(Set<Telefone> listaTelefones) {
-		this.listaTelefones = listaTelefones;
-	}
-
 	public Profissao getProfissao() {
 		return profissao;
 	}
@@ -192,14 +179,6 @@ public class Idoso {
 
 	public void setLogradouro(Logradouro logradouro) {
 		this.logradouro = logradouro;
-	}
-
-	public Set<Filho> getListaFilhos() {
-		return listaFilhos;
-	}
-
-	public void setListaFilhos(Set<Filho> listaFilhos) {
-		this.listaFilhos = listaFilhos;
 	}
 
 	public int getId() {
