@@ -56,7 +56,7 @@
 								<td>${idoso.id}</td>
 								<td>${idoso.nome}</td>
 								<td>${idoso.email}</td>
-								<td>${idoso.resposavel.nome}</td>
+								<td>${idoso.responsavel.nome}</td>
 								<td class="btnsAcoes">
 									<c:url var="link" value="/idoso/editar-idoso/${idoso.id}"/>
 									<a href="${link}" class="fa fa-pencil-square-o fa-lg btnsAcoes"></a>
@@ -88,7 +88,7 @@
 				</div>
 				<div class="modal-body">Deseja realmente excluir o idoso?</div>
 				<div class="modal-footer">
-					<c:url value="/usuario/excluir" var="action"/>
+					<c:url value="/idoso/excluir" var="action"/>
 					<form action="${action}" method="post">
 						<input type="hidden" name="usuarioId" id="idExcluir"/>
 					    <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>

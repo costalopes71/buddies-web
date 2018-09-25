@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +31,8 @@ public class IdosoController {
 	
 	@Autowired
 	private ResponsavelBO responsavelBO;
+
+	private String senhaSalva;
 	
 	@GetMapping("/idosos-home")
 	public ModelAndView abrirTelaIdosos(HttpServletRequest request) {
@@ -46,7 +49,7 @@ public class IdosoController {
 			}
 		} else {
 			try {
-				idosos = idosoBO.listarPorResponsavel(responsavelLogado.getId());
+				idosos = idosoBO.pesquisarPorResponsavel(responsavelLogado.getId());
 			} catch (Exception e) {
 				return MyUtils.redirectToErrorPage(e);
 			}
@@ -96,6 +99,54 @@ public class IdosoController {
 		redirectAttribute.addFlashAttribute("sucesso", true);
 		redirectAttribute.addFlashAttribute("operacao", "cadastrado");
 		return model;
+	}
+	
+	@GetMapping("/editar-idoso/{id}")
+	public ModelAndView abrirEditarForm(@PathVariable("id") int idUsuario) {
+		ModelAndView model = new ModelAndView("/editar/editar-idoso");
+		Idoso idoso = null;
+		try {
+			idoso = idosoBO.pesquisar(idUsuario);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+		
+		senhaSalva = idoso.getSenha();
+		model.addObject("titulo", "Editar Idoso | Buddies");
+		model.addObject("idoso", idoso);
+		MyUtils.incrementarBreadcrumb(model, "Idosos", "/idoso/idosos-home", "Editar");
+		return model;
+	}
+
+	@PostMapping("/editar-idoso")
+	public ModelAndView editar(Idoso idoso, HttpServletRequest request, RedirectAttributes redirectAttribute) {
+		
+		if (idoso.getSenha() == null || idoso.getSenha().equals("")) {
+			idoso.setSenha(senhaSalva);
+			senhaSalva = "";
+		}
+		
+		try {
+			idosoBO.atualizar(idoso);
+			redirectAttribute.addFlashAttribute("sucesso", true);
+			redirectAttribute.addFlashAttribute("operacao", "editado");
+			return new ModelAndView("redirect:/idoso/idosos-home");
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+	}
+	
+	@PostMapping("/excluir")
+	public ModelAndView excluir(int usuarioId, RedirectAttributes redirectAttributes) {
+		try {
+			idosoBO.excluir(usuarioId);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
+		
+		redirectAttributes.addFlashAttribute("sucesso", true);
+		redirectAttributes.addFlashAttribute("operacao", "excluído");
+		return new ModelAndView("redirect:/idoso/idosos-home");
 	}
 	
 	private List<String> obterListaEstados() {

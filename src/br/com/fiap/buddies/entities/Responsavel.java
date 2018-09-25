@@ -1,15 +1,10 @@
 package br.com.fiap.buddies.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,9 +29,6 @@ public class Responsavel {
 	
 	@Column(name="st_administrador", nullable=false)
 	private boolean administrador;
-	
-	@OneToMany(mappedBy="responsavel", cascade=CascadeType.REMOVE)
-	private Set<Idoso> listaIdosos = new HashSet<>(); 
 	
 	public String getNome() {
 		return nome;
@@ -76,14 +68,6 @@ public class Responsavel {
 
 	public void setAdministrador(boolean administrador) {
 		this.administrador = administrador;
-	}
-
-	public Set<Idoso> getListaIdosos() {
-		return listaIdosos;
-	}
-
-	public void setListaIdosos(Set<Idoso> listaIdosos) {
-		this.listaIdosos = listaIdosos;
 	}
 
 }
