@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "TB_BDS_USUARIO")
+@Table(name = "TB_BDS_IDOSO")
 @SequenceGenerator(name = "idoso", sequenceName = "SEQ_BDS_IDOSO", allocationSize = 1, initialValue = 1)
 public class Idoso {
 

@@ -34,10 +34,6 @@ public class HistoricoConversa {
 	@Column(name = "tx_conversa", nullable = false)
 	private String textoConversa;
 
-	@ManyToOne
-	@JoinColumn(name = "id_usuario", nullable = false)
-	private Idoso usuario;
-
 	public int getId() {
 		return id;
 	}
@@ -68,14 +64,6 @@ public class HistoricoConversa {
 
 	public void setTextoConversa(String textoConversa) {
 		this.textoConversa = textoConversa;
-	}
-
-	public Idoso getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Idoso usuario) {
-		this.usuario = usuario;
 	}
 
 }

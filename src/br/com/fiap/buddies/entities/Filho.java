@@ -23,24 +23,12 @@ public class Filho {
 	@Column(name = "nm_filho", nullable = false, length = 150)
 	private String nomeFilho;
 
-	@ManyToOne
-	@JoinColumn(name = "id_usuario", nullable = false)
-	private Idoso usuario;
-
 	public int getIdFilho() {
 		return idFilho;
 	}
 
 	public void setIdFilho(int idFilho) {
 		this.idFilho = idFilho;
-	}
-
-	public Idoso getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Idoso usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getNomeFilho() {

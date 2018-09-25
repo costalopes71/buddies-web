@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,10 +29,6 @@ public class Telefone {
 	@ManyToOne
 	@JoinColumn(name = "id_ddd")
 	private DiscagemDiretaDistancia ddd;
-
-	@OneToOne
-	@JoinColumn(name = "id_usuario")
-	private Idoso usuario;
 
 	public int getIdTelefone() {
 		return idTelefone;
@@ -65,14 +60,6 @@ public class Telefone {
 
 	public void setDdd(DiscagemDiretaDistancia ddd) {
 		this.ddd = ddd;
-	}
-
-	public Idoso getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Idoso usuario) {
-		this.usuario = usuario;
 	}
 
 }

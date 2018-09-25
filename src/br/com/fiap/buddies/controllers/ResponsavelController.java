@@ -23,7 +23,7 @@ import br.com.fiap.buddies.utils.MyUtils;
 
 @Controller
 @RequestMapping("usuario")
-public class UsuarioController {
+public class ResponsavelController {
 
 	@Autowired
 	private ResponsavelBO responsavelBO;

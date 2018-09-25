@@ -2,15 +2,20 @@ package br.com.fiap.buddies.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_BDS_LOGRADOURO")
+@SequenceGenerator(name="logradouro", sequenceName="SEQ_BDS_LOGRADOURO", allocationSize=1, initialValue=1)
 public class Logradouro {
 
 	@Id
 	@Column(name="id_logradouro")
+	@GeneratedValue(generator="logradouro", strategy=GenerationType.SEQUENCE)
 	private int id;
 	
 	@Column(name="nr_cep", length=8)

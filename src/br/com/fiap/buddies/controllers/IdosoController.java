@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.buddies.bo.IdosoBO;
 import br.com.fiap.buddies.bo.ResponsavelBO;
@@ -83,14 +84,17 @@ public class IdosoController {
 	}
 	
 	@PostMapping("/cadastrar-idoso")
-	public ModelAndView cadastrar(Idoso idoso) {
+	public ModelAndView cadastrar(Idoso idoso, RedirectAttributes redirectAttribute) {
 		ModelAndView model = new ModelAndView("redirect:/idoso/idosos-home");
 		
-		System.out.println(idoso.getNome());
-		System.out.println(idoso.getApelido());
-		System.out.println(idoso.getCpf());
-		System.out.println(idoso.getDescricao());
+		try {
+			idosoBO.cadastrar(idoso);
+		} catch (Exception e) {
+			return MyUtils.redirectToErrorPage(e);
+		}
 		
+		redirectAttribute.addFlashAttribute("sucesso", true);
+		redirectAttribute.addFlashAttribute("operacao", "cadastrado");
 		return model;
 	}
 	

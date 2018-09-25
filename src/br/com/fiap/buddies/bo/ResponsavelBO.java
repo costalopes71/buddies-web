@@ -14,7 +14,7 @@ import br.com.fiap.buddies.entities.Responsavel;
 import br.com.fiap.buddies.exceptions.DBException;
 import br.com.fiap.buddies.exceptions.LimiteCaracteresException;
 import br.com.fiap.buddies.security.Login;
-import br.com.fiap.buddies.security.pbkdf2.PasswordEncryptor;
+import br.com.fiap.buddies.utils.MyUtils;
 
 @Service
 public class ResponsavelBO {
@@ -106,7 +106,7 @@ public class ResponsavelBO {
 		}
 		
 		try {
-			senhaNova = criptografarPassword(senhaNova);
+			senhaNova = MyUtils.criptografarPassword(senhaNova);
 			responsavelDAO.alterarSenha(idUsuario, senhaNova);
 		} catch (Exception e) {
 			throw new DBException(e.getMessage());
@@ -126,25 +126,13 @@ public class ResponsavelBO {
 		}
 		
 		if (usuario.getSenha().length() <= 20) {
-			usuario.setSenha(criptografarPassword(usuario.getSenha()));
+			usuario.setSenha(MyUtils.criptografarPassword(usuario.getSenha()));
 		}
 		
 		validarNomeEmail(usuario);
 		
 	}
 	
-	private String criptografarPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-		try {
-			return PasswordEncryptor.generateStorngPasswordHash(password);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			throw new NoSuchAlgorithmException("Erro ao tentar criptografar o password. Entre em contato com o suporte./nErro: " + e.getMessage());
-		} catch (InvalidKeySpecException e) {
-			e.printStackTrace();
-			throw new InvalidKeySpecException("Erro ao tentar criptografar o password. Entre em contato com o suporte./nErro: " + e.getMessage());
-		}
-	}
-
 	public List<Responsavel> listar() throws DBException {
 		
 		try {
