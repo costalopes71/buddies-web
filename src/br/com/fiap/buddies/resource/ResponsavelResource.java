@@ -43,8 +43,9 @@ public class ResponsavelResource {
 	public LoginResponse validarLogin(@RequestBody Login usuario) {
 		
 		try {
-			if (responsavelBO.logar(usuario) != null) {
-				return new LoginResponse(true, "Logado com sucesso!");
+			Responsavel responsavel = responsavelBO.logar(usuario); 
+			if (responsavel != null) {
+				return new LoginResponse(true, "Logado com sucesso!", responsavel.getNome(), responsavel.getEmail(), responsavel.getId());
 			} else {
 				return new LoginResponse(false, "Login inválido.");
 			}

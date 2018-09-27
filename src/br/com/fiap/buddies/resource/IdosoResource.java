@@ -43,8 +43,9 @@ public class IdosoResource {
 	public LoginResponse validarLogin(@RequestBody Login usuario) {
 		
 		try {
-			if (idosoBO.logar(usuario) != null) {
-				return new LoginResponse(true, "Logado com sucesso!");
+			Idoso idoso = idosoBO.logar(usuario);
+			if (idoso != null) {
+				return new LoginResponse(true, "Logado com sucesso!", idoso.getNome(), idoso.getEmail(), idoso.getId());
 			} else {
 				return new LoginResponse(false, "Login inválido.");
 			}

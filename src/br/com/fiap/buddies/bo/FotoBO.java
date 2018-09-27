@@ -19,7 +19,15 @@ public class FotoBO {
 		try {
 			return fotoDAO.listar();
 		} catch (Exception e) {
-			throw new DBException("Erro ao tentar listar os idosos. Erro: " + e.getMessage());
+			throw new DBException("Erro ao tentar listar as fotos dos idosos. Erro: " + e.getMessage());
+		}
+	}
+
+	public List<Foto> listarPorIdoso(int id) throws DBException {
+		try {
+			return fotoDAO.listarPorIdoso(id);
+		} catch (Exception e) {
+			throw new DBException("Erro ao tentar listar as fotos do idoso. Erro: " + e.getMessage());
 		}
 	}
 	
