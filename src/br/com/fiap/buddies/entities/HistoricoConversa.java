@@ -1,7 +1,5 @@
 package br.com.fiap.buddies.entities;
 
-import java.util.Calendar;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_BDS_HISTORICO_CONVERSA")
@@ -18,50 +14,73 @@ import javax.persistence.TemporalType;
 public class HistoricoConversa {
 
 	@Id
-	@Column(name = "id_conversa")
+	@Column(name = "cd_conversa")
 	@GeneratedValue(generator="historico", strategy=GenerationType.SEQUENCE)
-	private int id;
+	private int codigo;
 
+	@Column(name="id_conversa", nullable=false)
+	private int idConversa;
+	
+	@Column(name="id_idoso", nullable=false)
+	private int idIdoso;
+	
 	@Column(name = "dt_conversa", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataConversa;
+	private long dataConversa;
 
-	@Column(nullable = false)
-	private boolean resposta;
+	@Column(name="st_resposta", nullable = false)
+	private int resposta;
 
-	@Column(name = "tx_conversa", nullable = false)
-	private String textoConversa;
+	@Column(name = "tx_mensagem", nullable = false)
+	private String mensagem;
 
-	public int getId() {
-		return id;
+	public HistoricoConversa() { }
+	
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
-	public Calendar getDataConversa() {
+	public long getDataConversa() {
 		return dataConversa;
 	}
 
-	public void setDataConversa(Calendar dataConversa) {
+	public void setDataConversa(long dataConversa) {
 		this.dataConversa = dataConversa;
 	}
 
-	public boolean isResposta() {
+	public int getResposta() {
 		return resposta;
 	}
 
-	public void setResposta(boolean resposta) {
+	public void setResposta(int resposta) {
 		this.resposta = resposta;
 	}
 
-	public String getTextoConversa() {
-		return textoConversa;
+	public String getMensagem() {
+		return mensagem;
 	}
 
-	public void setTextoConversa(String textoConversa) {
-		this.textoConversa = textoConversa;
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 
+	public int getIdConversa() {
+		return idConversa;
+	}
+
+	public void setIdConversa(int idConversa) {
+		this.idConversa = idConversa;
+	}
+
+	public int getIdIdoso() {
+		return idIdoso;
+	}
+
+	public void setIdIdoso(int idIdoso) {
+		this.idIdoso = idIdoso;
+	} 
+	
 }

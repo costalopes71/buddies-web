@@ -38,7 +38,7 @@ public class Idoso {
 	@Column(name = "dt_nascimento", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
-
+	
 	@Column(name = "nm_conjuge", length = 150)
 	private String conjuge;
 
